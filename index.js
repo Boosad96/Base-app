@@ -1,12 +1,10 @@
 export default async function handler(req, res) {
-  const body = req.body || {};
-  const buttonIndex = body.untrustedData?.buttonIndex;
+  const buttonIndex = req.body?.untrustedData?.buttonIndex;
 
-  // Button 1 → Open Nayner
   if (buttonIndex === 1) {
-    return res.json({
+    return res.status(200).json({
       frame: {
-        image: "https://placehold.co/600x400/png?text=Check+Nayner+Score",
+        image: "https://placehold.co/600x400/png?text=Search+on+Nayner",
         buttons: [
           {
             label: "Open Nayner",
@@ -18,9 +16,8 @@ export default async function handler(req, res) {
     });
   }
 
-  // Button 2 → Tip Creator (YOU)
   if (buttonIndex === 2) {
-    return res.json({
+    return res.status(200).json({
       frame: {
         image: "https://placehold.co/600x400/png?text=Tip+the+Creator+❤️",
         buttons: [
@@ -34,8 +31,7 @@ export default async function handler(req, res) {
     });
   }
 
-  // Default screen
-  res.json({
+  res.status(200).json({
     frame: {
       image: "https://placehold.co/600x400/png?text=Nayner+Score+Checker",
       buttons: [
